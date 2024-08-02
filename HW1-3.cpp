@@ -2,11 +2,15 @@
 
 int main() {
 
-    char FirstN[10] , Lastn[10] ;
-    printf( "Input Name = " ) ;
-    scanf( "%s %s" , &FirstN , &Lastn ) ;
-    printf( "------------------------------ \n" ) ;
-    printf( "Your name is %s %s" , FirstN , Lastn ) ;
+    char FN[10] ;
+    char LN[10] ;
+    printf( "Input Your name : " ) ;
+    scanf( "%s" ,&FN) ;
+    printf( "Input your Lastname : " ) ;
+    scanf( "%s" ,&LN) ;
+    printf( "----------------------------------- \n" ) ;
+    printf( "Your name is %s %s \n" , FN , LN ) ;
+    printf( "Thank you \n" ) ;
     return 0 ;
 }
 /*
