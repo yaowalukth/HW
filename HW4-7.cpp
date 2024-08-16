@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 int main() {
-    float cc, ff ;
+    float cc ;
     printf( "Enter C : " ) ;
     scanf( "%f",&cc ) ;
     printf( "%.2f 'c = %.2f 'F \n\n", cc,(1.8 * cc ) +32 ) ;
