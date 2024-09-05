@@ -13,47 +13,53 @@
     Output:
         11001
 */
-
 #include <stdio.h>
-#include <stdlib.h> //จัดการกับหน่วยความจำ การคำนวณ และการจัดการกับกระบวนการต่าง ๆ ภายในโปรแกรม
-
-// ฟังก์ชันในการแปลงเลขฐาน 10 เป็นเลขฐาน 2
-void printBinary(unsigned int num) {
-    if (num == 0) {
-        printf("0");
-        return;
-    }
-
-    // ใช้การแสดงผลของบิตจากบิตที่สูงสุดไปหาบิตที่ต่ำสุด
-    unsigned int mask = 1 << (sizeof(num) * 8 - 1); // สร้างมาสก์ที่มีบิตสูงสุดเป็น 1
-    int leadingZeroes = 1; // ใช้เพื่อข้ามศูนย์ที่นำหน้า
-
-    // ลูปเพื่อลดมาสก์ทีละบิต
-    for ( int i = 0 ; i < sizeof(num) * 8 ; i++ ) {
-        if (num & mask) {
-            printf("1");
-            leadingZeroes = 0; // พบ 1 จึงเริ่มแสดงผล
-        } else if (!leadingZeroes) {
-            printf("0");
-        }
-        mask >>= 1; // เลื่อนมาสก์ไปทางขวา
-    }
-}
 
 int main() {
-    char hexString[20];
 
-    // รับค่าเลขฐาน 16 จากผู้ใช้
-    printf("Enter a hexadecimal number: ");
-    scanf("%s", hexString);
+    char hex[20] ;
+    int index = 0 ;
 
-    // แปลงเลขฐาน 16 เป็นเลขฐาน 10
-    unsigned int decimalValue = (unsigned int)strtol(hexString, NULL, 16);
+    printf( "Plese enter your hexadecimal : " ) ;
+    scanf( "%s", hex ) ;
+    printf( "Your hexadecimal is : %s \n", hex ) ;
 
-    // แสดงผลลัพธ์เป็นเลขฐาน 2
-    printf("Binary representation: ");
-    printBinary(decimalValue);
-    printf("\n");
-
-    return 0;
+    printf( "Binary equivalent : " ) ;
+    while( hex[index] != '\0' ) {
+        if( hex[index] == '0' ) {
+            printf( "0000" ) ;
+        }else if( hex[index] == '1' ) {
+            printf( "0001" ) ;
+        }else if( hex[index] == '2' ) {
+            printf( "0010" ) ;
+        }else if( hex[index] == '3' ) {
+            printf( "0011" ) ;
+        }else if( hex[index] == '4' ) {
+            printf( "0100" ) ;
+        }else if( hex[index] == '5' ) {
+            printf( "0101" ) ;
+        }else if( hex[index] == '6' ) {
+            printf( "0110" ) ;
+        }else if( hex[index] == '7' ) {
+            printf( "0111" ) ;
+        }else if( hex[index] == '8' ) {
+            printf( "1000" ) ;
+        }else if( hex[index] == '9' ) {
+            printf( "1001" ) ;
+        }else if( hex[index] == 'A' ) {
+            printf( "1010" ) ;
+        }else if( hex[index] == 'B' ) {
+            printf( "1011" ) ;
+        }else if( hex[index] == 'C' ) {
+            printf( "1100" ) ;
+        }else if( hex[index] == 'D' ) {
+            printf( "1101" ) ;
+        }else if( hex[index] == 'E' ) {
+            printf( "1110" ) ;
+        }else if( hex[index] == 'F' ) {
+            printf( "1111" ) ;
+        }
+        index ++ ;
+    }
+    return 0 ;
 }
