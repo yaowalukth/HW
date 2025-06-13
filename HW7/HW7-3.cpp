@@ -35,3 +35,21 @@ int main() {
     printf( "Sum = %d", sum ) ;
     return 0 ;
 }
+
+#include <stdio.h>
+int main() {
+    int num , i = 1 , number = 9 , sum = 0 ;
+    printf( "Enter number : " ) ;
+    scanf( "%d", &num ) ;
+    printf( "Series = %d ", number ) ;
+    sum += number ;
+    do{
+        number = number * 10 + 9 ;
+        printf( "+ %d ", number ) ;
+        sum += number ;
+        i ++ ;
+    } while( i < num ) ;
+    printf( "\n" ) ;
+    printf( "Sum = %d", sum ) ;
+    return 0 ;
+}
