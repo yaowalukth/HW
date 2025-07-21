@@ -1,75 +1,64 @@
 package booking;
 import java.util.Arrays;
-class List {
-    Record[] records;
+class Set {
+    int arr[];
     int count;
 
-    public List() {
+    public Set() {
         this(5);
+        System.out.println("Set created.");
     }
 
-    public List(int x) {
-        records = new Record[x];
-        count = 0;
+    public Set(int x) {
+        arr = new int[x];
     }
 
-    void add(Record record) {
-        if (count == records.length) {
-            records = Arrays.copyOf(records, records.length * 2);
+    void add(int item) {
+        int i = search(item);
+        if (size() == arr.length) {
+            arr = Arrays.copyOf(arr, arr.length * 2);
         }
-        records[count] = record;
-        count++;
+        if (i == count) {
+            arr[count] = item;
+            count++;
+        }
     }
 
-    boolean remove(String id) {
-        for (int i = 0; i < count; i++) {
-            if (records[i].id.equals(id)) {
-                // เลื่อนสมาชิกทั้งหมดมาข้างหน้า
-                for (int j = i; j < count - 1; j++) {
-                    records[j] = records[j + 1];
+    void remove(int x) {
+        int index = search(x);
+        if (index < count) {
+            arr[index] = arr[count - 1];
+            count--;
+        }
+    }
+
+    int search(int x) {
+        int i = 0;
+        int a[];
+        if (count != 0) {
+            a = Arrays.copyOf(arr, count + 1);
+            a[a.length - 1] = x;
+            for (; i < count; i++) {
+                if (a[i] == x) {
+                    break;
                 }
-                count--;
-                return true;
             }
         }
-        return false;
-    }
-
-    Record getFirst() {
-        if (count > 0) {
-            return records[0];
-        }
-        return null;
-    }
-
-    boolean isEmpty() {
-        return count == 0;
+        return i;
     }
 
     int size() {
         return count;
     }
 
-    boolean hasRecord(String id) {
-        for (int i = 0; i < count; i++) {
-            if (records[i].id.equals(id)) {
-                return true;
-            }
-        }
-        return false;
+    boolean contains(int x) {
+        return search(x) < count;
     }
 
-    boolean hasDuplicateBooking(String name) {
-        int nameCount = 0;
+    void show() {
         for (int i = 0; i < count; i++) {
-            if (records[i].name.equals(name)) {
-                nameCount++;
-            }
+            System.out.print(arr[i] + " ");
         }
-        return nameCount > 1;
-    }
-
-    boolean hasDoubleBooking() {
-        return count > 1;
+        System.out.println();
     }
 }
