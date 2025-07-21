@@ -1,64 +1,33 @@
 package booking;
-import java.util.Arrays;
-class Set {
-    int arr[];
-    int count;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+// คลาส Record สำหรับเก็บข้อมูลการจอง
+class Record {
+    String name;
+    String id;
+    String no;
+    String date;
+    String time;
 
-    public Set() {
-        this(5);
-        System.out.println("Set created.");
+    public Record() {
+        this("unknown", "0", "dd/mm/yyyy", "hh:mm");
     }
 
-    public Set(int x) {
-        arr = new int[x];
+    public Record(String name, String no, String d, String t) {
+        id = generateID(no, d, t);
+        this.name = name;
+        this.no = no;
+        date = d;
+        time = t;
     }
 
-    void add(int item) {
-        int i = search(item);
-        if (size() == arr.length) {
-            arr = Arrays.copyOf(arr, arr.length * 2);
-        }
-        if (i == count) {
-            arr[count] = item;
-            count++;
-        }
-    }
-
-    void remove(int x) {
-        int index = search(x);
-        if (index < count) {
-            arr[index] = arr[count - 1];
-            count--;
-        }
-    }
-
-    int search(int x) {
-        int i = 0;
-        int a[];
-        if (count != 0) {
-            a = Arrays.copyOf(arr, count + 1);
-            a[a.length - 1] = x;
-            for (; i < count; i++) {
-                if (a[i] == x) {
-                    break;
-                }
-            }
-        }
-        return i;
-    }
-
-    int size() {
-        return count;
-    }
-
-    boolean contains(int x) {
-        return search(x) < count;
-    }
-
-    void show() {
-        for (int i = 0; i < count; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
+    String generateID(String no, String d, String t) {
+        LocalDateTime n = LocalDateTime.now();
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("ss");
+        String formattedTime = n.format(f);
+        d = d.replaceAll("/", "");
+        t = t.replace(":", "");
+        String id = "#" + no + d + t + "-" + formattedTime;
+        return id;
     }
 }
